@@ -13,7 +13,7 @@ public class UserController {
 
     @Autowired
     public UserController(UserService userService){
-        System.out.println("UserController constructor");
+        //System.out.println("UserController constructor");
         this.userService = userService;
     }
 
