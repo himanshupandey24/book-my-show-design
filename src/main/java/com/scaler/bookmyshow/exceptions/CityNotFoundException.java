@@ -1,4 +1,14 @@
 package com.scaler.bookmyshow.exceptions;
 
-public class CityNotFoundException extends Throwable {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class CityNotFoundException extends Exception {
+    String message;
+    public CityNotFoundException(String message){
+        super(message);
+        this.message = message;
+    }
 }

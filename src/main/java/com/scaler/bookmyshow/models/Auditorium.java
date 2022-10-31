@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 public class Auditorium extends BaseModel {
     private String name;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Seat> seats;
     private int capacity;
 

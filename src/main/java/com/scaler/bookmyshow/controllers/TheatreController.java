@@ -1,7 +1,6 @@
 package com.scaler.bookmyshow.controllers;
 
-import com.scaler.bookmyshow.dtos.CreateTheatreRequestDto;
-import com.scaler.bookmyshow.dtos.CreateTheatreResponseDto;
+import com.scaler.bookmyshow.dtos.*;
 import com.scaler.bookmyshow.exceptions.CityNotFoundException;
 import com.scaler.bookmyshow.models.Theatre;
 import com.scaler.bookmyshow.services.TheatreService;
@@ -18,9 +17,28 @@ public class TheatreController {
     }
 
     public CreateTheatreResponseDto createTheatre(CreateTheatreRequestDto request) throws CityNotFoundException {
-        Theatre savedTheatre = theatreService.createTheatre(request.getName(), request.getAddress(), request.getCityID());
+        Theatre savedTheatre = theatreService.createTheatre(
+                request.getName(),
+                request.getAddress(),
+                request.getCityID());
         CreateTheatreResponseDto response = new CreateTheatreResponseDto();
         response.setTheatre(savedTheatre);
         return response;
     }
+
+    public CreateTheatreResponseDto addAuditorium(CreateAudiRequestDto request){
+        Theatre savedAuditorium = theatreService.addAuditorium(
+                request.getName(),
+                request.getCapacity(),
+                request.getTheatreID());
+
+        CreateTheatreResponseDto response = new CreateTheatreResponseDto();
+        response.setTheatre(savedAuditorium);
+        return response;
+    }
+
+    public void addSeats(CreateSeatRequestDto request){
+        theatreService.addSeats(request.getSeatCount(), request.getAudiId());
+    }
+
 }
